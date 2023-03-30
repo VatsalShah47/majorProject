@@ -1,0 +1,3 @@
+GOOGLE_CLIENT_ID = "249082161019-3dq9l6r75c8kok16tuaf88ip1bdh3bbt.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET = "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"
+DB_URL = "mongodb+srv://test:test1357924680@farming-assisstant.z38uqhw.mongodb.net/?retryWrites=true&w=majority"

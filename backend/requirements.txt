@@ -1,0 +1,17 @@
+flask
+fpdf
+pandas
+numpy
+torch
+pandas
+flask_cors
+torchvision
+scikit-learn
+requests
+Pillow
+gunicorn == 20.0.4
+tensorflow
+openai
+requests
+python-dotenv
+werkzeug
