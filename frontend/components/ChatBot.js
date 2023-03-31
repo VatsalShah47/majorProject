@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+  
 
 export default class ChatBot extends Component {
   componentDidMount() {
     (function (d, m) {
       var kommunicateSettings = {
-        appId: "2c52c9f7d222fc3a627355e0485122ae6",
+        appId: "32669c32d7754a5d08fe4ba487665b0be",
         popupWidget: true,
         automaticChatOpenOnNavigation: true,
       };
