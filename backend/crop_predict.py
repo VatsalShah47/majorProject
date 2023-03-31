@@ -6,7 +6,7 @@ from sklearn.utils import shuffle
 from sklearn.preprocessing import LabelEncoder
 import requests
 import datetime
-
+import pymongo
 
 import openai
 
@@ -43,6 +43,9 @@ class Crop_Predict(object):
             K = request.json["K"]
             pH = request.json["PH"]
             location = request.json["Location"]
+            client = pymongo.MongoClient("mongodb+srv://pyflask:135792468@farming-assisstant.z38uqhw.mongodb.net/?retryWrites=true&w=majority")
+            test_db = client["test"]
+
             print(location)
 
             # Use the OpenWeatherMap API to get the weather forecast for the next 15 days
@@ -169,7 +172,7 @@ class Crop_Predict(object):
                 newList.append(
                     {"name": list(dict.keys())[i], "img": list(dict.values())[i]}
                 )
-
+            test_db["crop_recommendation"].insert_one({"input":{"N":N,"P":P,"K":K,"PH":pH,"Location":location},"output":list(dict.keys())})
             print(newList)
             return newList
 
