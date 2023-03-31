@@ -3,6 +3,7 @@ import { signIn, useSession, getSession } from "next-auth/react";
 import Admin from "layouts/Admin.js";
 import DiseaseForm from "components/DiseaseForm";
 
+
 export default function Disease() {
   const { data: session, status } = useSession();
   console.log(session);
@@ -25,6 +26,7 @@ export default function Disease() {
           <DiseaseForm />
         </div>
       </div>
+
     </Admin>
   );
 }
