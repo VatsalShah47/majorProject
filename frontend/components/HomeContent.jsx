@@ -97,7 +97,7 @@ const HomeContent = () => {
               alt="Flower and sky"
             />
 
-            {/* <div class="relative p-4">
+            <div class="relative p-4">
               <h3 class="text-base md:text-xl font-medium text-gray-800">
                 Weather
               </h3>
@@ -109,7 +109,7 @@ const HomeContent = () => {
               <button className="absolute bottom-0 right-0 mr-2 mb-1 mt-10 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-full">
                 <Link href="/Weather">Predict</Link>
               </button>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

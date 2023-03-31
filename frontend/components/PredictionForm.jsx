@@ -29,7 +29,7 @@ const PredictionForm = () => {
     console.log(formData);
 
     await axios
-      .post("https://farming-assistant-backend-with-openai.onrender.com/forecast", {
+      .post("http://127.0.0.1:5000/forecast", {
         location: formData.location,
       })
       .then(function (response) {

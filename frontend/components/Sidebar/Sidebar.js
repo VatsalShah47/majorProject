@@ -224,7 +224,7 @@ export default function Sidebar() {
                 </Link>
               </li>
 
-              {/* <li className="items-center">
+              <li className="items-center">
                 <Link href="/weather">
                   <a
                     href="#pablo"
@@ -246,7 +246,7 @@ export default function Sidebar() {
                     Weather
                   </a>
                 </Link>
-              </li> */}
+              </li>
 
               <li className="items-center">
                 <Link href="/news">
