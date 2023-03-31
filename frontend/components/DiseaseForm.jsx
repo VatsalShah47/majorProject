@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import ReactLoading from "react-loading";
+import CardBarChart from "./Cards/CardBarChart";
 
 const DiseaseForm = () => {
   const [file, setFile] = useState(null);
@@ -55,8 +56,10 @@ const DiseaseForm = () => {
   };
 
   return (
+    <>
+
     <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-      <form onSubmit={handleSubmit} class="w-full max-w-lg mx-auto py-10">
+      <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto py-10">
         <div class="flex w-full items-center justify-center bg-grey-lighter">
           <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-blue-700">
             <svg
@@ -105,6 +108,7 @@ const DiseaseForm = () => {
             disabled={isDisabled}
             className="w-96 h-12 flex justify-center items-center text-md text-white bg-blueGray-800 hover:bg-blueGray-800 transition-all font-medium rounded-lg px-5 py-2.5 text-center"
           >
+
             {isLoading ? (
               <ReactLoading
                 type="bars"
@@ -118,6 +122,8 @@ const DiseaseForm = () => {
           </button>
         </div>
       </form>
+      
+
       {output ? (
         <div
           class="mt-2 mx-6 p-4 mb-4 text-lg text-green bg-white rounded-lg"
@@ -210,6 +216,7 @@ const DiseaseForm = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

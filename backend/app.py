@@ -2,7 +2,7 @@ from __future__ import print_function
 import json
 from flask_cors import CORS
 from fpdf import FPDF
-from flask import Flask, request, render_template, Markup
+from flask import Flask, request, render_template, Markup , jsonify
 import numpy as np
 import pickle
 import pandas as pd
@@ -160,6 +160,7 @@ disease_classes = [
     "Tomato___healthy",
 ]
 
+
 disease_model_path = "models/plant-disease-model.pth"
 disease_model = ResNet9(3, len(disease_classes))
 disease_model.load_state_dict(
@@ -294,89 +295,112 @@ def result2():
 
         fertilizer_info = {"name": "", "img": ""}
         if ans == 0:
-            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"10-26-26"})
+            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"Compost"})
             response = openai.Image.create(
-                prompt="10-26-26 fertilizer",
+                prompt="compost from food scraps, yard waste",
                 n=1,
                 size="256x256",
             )
             return {
-                "name": "10-26-26",
+                "name": "Compost",
                 "img": response["data"][0]["url"],
-                "how_to_use": "To use 10-26-26 fertilizer, you will need to mix it with water according to the instructions on the package. The package will have a recommended mixing ratio, such as 1 tablespoon per gallon of water. For example, if you want to make a gallon of solution and package says to use 1 tablespoon per gallon, you would need to use 1 tablespoon of 10-26-26 fertilizer and 1 gallon of water. Then you can use the solution to water your plants or apply it to the foliage. It's important to note that different plants have different needs, and the amount of fertilizer you use should be adjusted accordingly. Also, be sure to not over-fertilize, as it can burn the plants. It's also a good idea to check the pH level of your soil and adjust it if necessary. As a general rule, most plants prefer a pH between 6 and 7.",
+                "how_to_use": "Compost is easy to make at home using food scraps, yard waste, and other organic materials. You can also purchase compost at garden centers and nurseries. To use compost as a fertilizer, simply mix it into the soil before planting or use it as a top dressing around established plants. \nThat being said, it's always a good idea to do a soil test to determine the specific nutrient needs of your plants and soil. This can help you choose the right organic fertilizer and ensure that your plants are getting the nutrients they need to grow and thrive.",
             }
         elif ans == 1:
-            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"14-35-14"})
+            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"Dr. Earth Organic 5 Tomato, Vegetable & Herb Fertilizer"})
+
             response = openai.Image.create(
-                prompt="14-35-14 fertilizer",
+                prompt="Dr. Earth Organic 5 Tomato, Vegetable & Herb Fertilizer",
                 n=1,
                 size="256x256",
             )
             return {
-                "name": "14-35-14",
+                "name": "Dr. Earth Organic 5 Tomato, Vegetable & Herb Fertilizer",
                 "img": response["data"][0]["url"],
-                "how_to_use": "14-35-14 is a type of water-soluble fertilizer that contains 14% nitrogen, 35% phosphorous, and 14% potassium. To use it, you will need to mix it with water according to the instructions on the label. The package will have a recommended mixing ratio, such as 1 tablespoon per gallon of water. For example, if you want to make a gallon of solution and package says to use 1 tablespoon per gallon, you would need to use 1 tablespoon of 14-35-14 fertilizer and 1 gallon of water. Then you can use the solution to water your plants or apply it to the foliage. It's important to note that different plants have different needs, and the amount of fertilizer you use should be adjusted accordingly. Also, be sure to not over-fertilize, as it can burn the plants. It's also a good idea to check the pH level of your soil and adjust it if necessary. As a general rule, most plants prefer a pH between 6 and 7. Be sure to follow the instructions on the label and use caution when handling any fertilizer, as they can be harmful if not used properly.",
+                "how_to_use": "Dr. Earth Organic 5 Tomato, Vegetable & Herb Fertilizer organic components: Fish bone meal | Alfalfa meal | Feather meal | Soft rock phosphate | Mined potassium sulfate | Seaweed extract | Beneficial soil microbes",
             }
         elif ans == 2:
-            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"17-17-17"})
+            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"Dr. Earth All Purpose Fertilizer"})
+
             response = openai.Image.create(
-                prompt="17-17-17 fertilizer",
+                prompt="Dr. Earth All Purpose Fertilizer",
                 n=1,
                 size="256x256",
             )
             return {
-                "name": "17-17-17",
+                "name": "Dr. Earth All Purpose Fertilizer",
                 "img": response["data"][0]["url"],
-                "how_to_use": "7-17-17 fertilizer is a water-soluble fertilizer that contains 7% nitrogen, 17% phosphorous, and 17% potassium. To use it, you will need to mix it with water according to the instructions on the label. The package will have a recommended mixing ratio, such as 1 tablespoon per gallon of water. For example, if you want to make a gallon of solution and package says to use 1 tablespoon per gallon, you would need to use 1 tablespoon of 7-17-17 fertilizer and 1 gallon of water. Then you can use the solution to water your plants or apply it to the foliage. It's important to note that different plants have different needs, and the amount of fertilizer you use should be adjusted accordingly. Also, be sure to not over-fertilize, as it can burn the plants. It's also a good idea to check the pH level of your soil and adjust it if necessary. As a general rule, most plants prefer a pH between 6 and 7. Be sure to follow the instructions on the label and use caution when handling any fertilizer, as they can be harmful if not used properly. It's important to keep in mind that 7-17-17 ratio is lower in nitrogen than other ratio, that's why it's a good idea to use this fertilizer when the plant is in the blooming or fruiting stage and not in the vegetative stage.",
+                "how_to_use": "Dr. Earth All Purpose Fertilizer organic components: Feather meal | Seaweed extract | Soft rock phosphate | Humic acid | Kelp meal | Blood meal | Bone meal | Dolomite lime",
             }
         elif ans == 3:
-            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"20-20"})
+            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"Jobe's Organics All-Purpose Fertilizer"})
+
             response = openai.Image.create(
-                prompt="20-20 fertilizer",
+                prompt="Jobe's Organics All-Purpose Fertilizer",
                 n=1,
                 size="256x256",
             )
             return {
-                "name": "20-20",
+                "name": "Jobe's Organics All-Purpose Fertilizer",
                 "img": response["data"][0]["url"],
-                "how_to_use": "20-20 fertilizer is a water-soluble fertilizer that contains equal amounts of Nitrogen (N) and Potassium (K) which is 20% each. It's important to note that this fertilizer does not contain any Phosphorus (P). To use it, you will need to mix it with water according to the instructions on the label. The package will have a recommended mixing ratio, such as 1 tablespoon per gallon of water. For example, if you want to make a gallon of solution and package says to use 1 tablespoon per gallon, you would need to use 1 tablespoon of 20-20 fertilizer and 1 gallon of water. Then you can use the solution to water your plants or apply it to the foliage. It's important to note that different plants have different needs, and the amount of fertilizer you use should be adjusted accordingly. Also, be sure to not over-fertilize, as it can burn the plants. It's also a good idea to check the pH level of your soil and adjust it if necessary. As a general rule, most plants prefer a pH between 6 and 7. Be sure to follow the instructions on the label and use caution when handling any fertilizer, as they can be harmful if not used properly. It's important to keep in mind that 20-20 ratio is higher in Potassium (K) than Nitrogen(N), that's why it's a good idea to use this fertilizer when the plant is in the blooming or fruiting stage and not in the vegetative stage.",
+                "how_to_use": "Jobe's Organics All-Purpose Fertilizer organic composition: Feather meal | Bone meal | Sulfate of potash | Kelp meal | Alfalfa meal | Humic acid",
             }
         elif ans == 4:
-            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"28-28"})
+            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"Dr. Earth Organic Nitrogen Fertilizer"})
+
             response = openai.Image.create(
-                prompt="28-28 fertilizer",
+                prompt="Dr. Earth Organic Nitrogen Fertilizer",
                 n=1,
                 size="256x256",
             )
             return {
-                "name": "28-28",
+                "name": "Dr. Earth Organic Nitrogen Fertilizer",
                 "img": response["data"][0]["url"],
-                "how_to_use": "28-28 fertilizer is a water-soluble fertilizer that contains equal amounts of Nitrogen (N) and Potassium (K) which is 28% each. It's important to note that this fertilizer does not contain any Phosphorus (P). To use it, you will need to mix it with water according to the instructions on the label. The package will have a recommended mixing ratio, such as 1 tablespoon per gallon of water. For example, if you want to make a gallon of solution and package says to use 1 tablespoon per gallon, you would need to use 1 tablespoon of 28-28 fertilizer and 1 gallon of water. Then you can use the solution to water your plants or apply it to the foliage. It's important to note that different plants have different needs, and the amount of fertilizer you use should be adjusted accordingly. Also, be sure to not over-fertilize, as it can burn the plants. It's also a good idea to check the pH level of your soil and adjust it if necessary. As a general rule, most plants prefer a pH between 6 and 7. Be sure to follow the instructions on the label and use caution when handling any fertilizer, as they can be harmful if not used improperly. It's important to keep in mind that 28-28 ratio is higher in Nitrogen (N) and Potassium (K) than other ratios, that's why it's a good idea to use this fertilizer when the plant is in the vegetative stage and not in the blooming or fruiting stage. It's also important to note that this fertilizer does not contain Phosphorus (P), which is important for root growth and seed production, so you may need to supplement with additional fertilizer that contains P.",
+                "how_to_use": "Dr. Earth Organic Nitrogen Fertilizer organic composition: Soybean meal | Alfalfa meal | Fishbone meal | Feather meal | Seabird guano | Blood meal | Kelp meal | Potassium sulfate | Humic acid",
             }
         elif ans == 5:
-            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"DAP"})
+            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"Espoma Organic Lawn Food"})
+
             response = openai.Image.create(
-                prompt="DAP fertilizer",
+                prompt="Espoma Organic Lawn Food",
                 n=1,
                 size="256x256",
             )
             return {
-                "name": "DAP",
+                "name": "Espoma Organic Lawn Food",
                 "img": response["data"][0]["url"],
-                "how_to_use": "DAP (diammonium phosphate) fertilizer is a water-soluble fertilizer that contains 18% Nitrogen (N) and 46% Phosphorus (P) . To use it, you will need to mix it with water according to the instructions on the label. The package will have a recommended mixing ratio, such as 1 tablespoon per gallon of water. For example, if you want to make a gallon of solution and package says to use 1 tablespoon per gallon, you would need to use 1 tablespoon of DAP fertilizer and 1 gallon of water. Then you can use the solution to water your plants or apply it to the foliage. It's important to note that different plants have different needs, and the amount of fertilizer you use should be adjusted accordingly. Also, be sure to not over-fertilize, as it can burn the plants. It's also a good idea to check the pH level of your soil and adjust it if necessary. As a general rule, most plants prefer a pH between 6 and 7. Be sure to follow the instructions on the label and use caution when handling any fertilizer, as they can be harmful if not used improperly. It's important to keep in mind that DAP is high in Phosphorus (P) than Nitrogen(N), that's why it's a good idea to use this fertilizer when the plant is in the blooming or fruiting stage and not in the vegetative stage.",
+                "how_to_use": "Espoma Organic Lawn Food organic composition: Corn gluten meal | Feather meal | Soybean meal | Potassium sulfate | Humates | Iron",
             }
         else:
-            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"UREA"})
+            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"FoxFarm"})
+
             response = openai.Image.create(
-                prompt="Urea fertilizer",
+                prompt="FoxFarm",
                 n=1,
                 size="256x256",
             )
             return {
-                "name": "Urea",
+                "name": "FoxFarm",
                 "img": response["data"][0]["url"],
-                "how_to_use": "Urea is a type of nitrogen fertilizer that is commonly used in agriculture. It is typically applied in granular form, although it can also be found in liquid or pellet form. To use urea fertilizer, you will need to spread it evenly over the soil and then till or rake it into the top few inches of soil. The recommended application rate will vary depending on the type of crop you are growing and the stage of growth it is in, so it's important to consult the instructions on the package or consult with your local agricultural extension agent. It's recommended to apply Urea fertilizer when the soil is moist and the weather is mild, in order to avoid loss of nitrogen due to volatilization. It's also important to note that Urea fertilizer should not be applied to dry soil or to the foliage of plants, as this can cause damage. It's also a good idea to check the pH level of your soil and adjust it if necessary. As a general rule, most plants prefer a pH between 6 and 7. Be sure to follow the instructions on the label and use caution when handling any fertilizer, as they can be harmful if not used properly.",
+                "how_to_use": "FoxFarm organic composition: Earthworm castings | Bat guano | Fish meal | Bone meal | Blood meal | Feather meal | Kelp meal",
             }
+
+@app.route("/fertilizer-predict", methods=["GET"])
+def get_fertilizer_predict():
+    # data = test_db["fertilizer_recommendation"].find()
+    fertilizers = ["Compost","Dr. Earth Organic 5 Tomato, Vegetable & Herb Fertilizer","Dr. Earth All Purpose Fertilizer","Jobe's Organics All-Purpose Fertilizer","Dr. Earth Organic Nitrogen Fertilizer","Espoma Organic Lawn Food","FoxFarm"]
+    results = []
+    for fertilizer in fertilizers:
+        i = test_db["fertilizer_recommendation"].count_documents({"output":fertilizer})
+        results.append(i if i is not None else 0)
+    result = {
+        "labels":fertilizers,
+        "datasets":results,
+        "xlabel":"Fertilizers",
+        "ylabel":"count"
+    }
+    result = jsonify(result)
+    return result
 
 
 @app.route("/weather-predict", methods=["POST"])
@@ -416,7 +440,26 @@ def disease_prediction():
     return render_template("disease.html", title=title)
 
 
-@app.route("/disease-predict2", methods=["GET", "POST"])
+@app.route("/disease-predict", methods=["GET"])
+def get_disease_predict():
+    # data = test_db["fertilizer_recommendation"].find()
+    results = []
+    for disease in range(0,38):
+        try:
+            i = test_db["fertilizer_recommendation"].count_documents({"disease":disease})
+        except:
+            pass
+        results.append(i if i is not None else 0)
+    result = {
+        "labels":disease_classes,
+        "datasets":results,
+        "xlabel":"Fertilizers",
+        "ylabel":"count"
+    }
+    result = jsonify(result)
+    return result
+
+@app.route("/disease-predict2", methods=[ "POST"])
 def submit():
     if request.method == "POST":
         image = request.files["file"]
@@ -442,7 +485,7 @@ def submit():
         )
         print(instructions)
         crop , disease = title.split(":")
-        test_db["disease_predict"].insert_one({"crop": crop ,"disease": disease})
+        test_db["disease_predict"].insert_one({"disease": pred})
 
         return {
             "title": title,

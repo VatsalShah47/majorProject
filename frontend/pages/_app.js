@@ -78,6 +78,7 @@ export default class MyApp extends App {
             src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"
             async
           ></script>
+          
         </Head>
         <Layout>
           <SessionProvider session={pageProps.session}>
