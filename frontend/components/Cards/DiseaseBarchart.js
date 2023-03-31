@@ -12,7 +12,7 @@ export default function CardBarChart() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:5000/fertilizer-predict");
+        const response = await fetch("http://127.0.0.1:5000/disease-predict");
         const data = await response.json();
         setChartData(data);
         console.log(data)
@@ -26,7 +26,7 @@ export default function CardBarChart() {
 
   useEffect(() => {
     // Get the canvas element
-    const ctx = document.getElementById("myChart").getContext("2d");
+    const ctx = document.getElementById("myChart2").getContext("2d");
 
     // Create the chart
     const myChart = new Chart(ctx, {
@@ -58,7 +58,7 @@ export default function CardBarChart() {
   }, [chartData]);
 
   return (
-    <canvas id="myChart"></canvas>
+    <canvas id="myChart2"></canvas>
   );
 }
 

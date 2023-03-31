@@ -113,6 +113,9 @@ export default function Navbar(props) {
                 </Link>
               </li>
               <li className="flex items-center">
+                <Link href="/dashboard">
+                  <a className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-sm uppercase font-bold">
+                    Dashboard
                 <Link href="/weather">
                   <a className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-sm uppercase font-bold">
                     Weather
