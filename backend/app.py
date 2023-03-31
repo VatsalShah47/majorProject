@@ -20,7 +20,8 @@ from PIL import Image
 import torchvision.transforms.functional as TF
 import CNN
 import openai
-import datetime
+import datetime 
+from datetime import date
 
 import pymongo
 
@@ -277,7 +278,7 @@ def result2():
         to_predict_list = list(to_predict.values())
 
         # Use the OpenWeatherMap API to get the weather forecast for the next 15 days
-        api_key = "910fc3efa3d910c22b2a8a6a6989347c" #os.getenv("OPEN_WEATHER_API_KEY")
+        api_key = "2cbb6bbbc606b90a6e61379b59074598"
         url = f"http://api.openweathermap.org/data/2.5/forecast?q={location}&appid={api_key}"
         response = requests.get(url)
         weather_data = response.json()
@@ -513,27 +514,32 @@ def result4():
 
 @app.route("/forecast", methods=["POST"])
 def forecast():
+    today = date.today()
     # Get the user's location from the form
     location = request.json["location"]
 
     # Use the OpenWeatherMap API to get the weather forecast for the next 15 days
     # api_key = os.getenv("OPEN_WEATHER_API_KEY")
-    api_key = "25a7391eb816518d0639ab3f83a31f42"
-    url = f"http://api.openweathermap.org/data/2.5/forecast?q={location}&cnt=15&appid={api_key}"
+    api_key = "8fd236fa6ea28af581da0cd3705c9d67"
+    url = f"https://api.openweathermap.org/data/2.5/forecast?q={location}&appid={api_key}"
+        
     response = requests.get(url)
     weather_data = response.json()
 
-    # Extract the necessary information from the API response
-    forecast = []
-    for item in weather_data["list"]:
-        forecast.append(
-            {
-                "date": item["dt_txt"],
-                "temperature": item["main"]["temp"],
-                "humidity": item["main"]["humidity"],
-                "wind": item["wind"]["speed"],
-            }
-        )
+    forecast=[]
+
+    for reading in weather_data["list"]:
+        if reading["dt_txt"].endswith("12:00:00"):
+            forecast.append({
+                "date": reading["dt_txt"][:10],
+                "weather": reading["weather"][0]["description"],
+                "temperature": reading["main"]["temp"],
+                "humidity": reading["main"]["humidity"],
+                "wind_speed": reading["wind"]["speed"],
+                "rain": reading["weather"][0]['description'].title()
+        })
+
+    print(forecast[0]['rain'])
 
     month = datetime.datetime.now().month
     hemisphere = "north"
@@ -549,7 +555,7 @@ def forecast():
         climate = "winter"
 
     temperature = forecast[0]["temperature"]
-    openai.api_key = os.getenv("OPENAI_API_KEY")
+    # openai.api_key = os.getenv("OPENAI_API_KEY")
     instructions = openai.Completion.create(
         model="text-davinci-003",
         prompt=f"aggricultural conditions based on {temperature} kelvin and {climate} climate",
