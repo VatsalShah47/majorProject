@@ -22,6 +22,8 @@ import CNN
 import openai
 import datetime
 
+import pymongo
+
 from dotenv import load_dotenv
 import os
 
@@ -46,6 +48,9 @@ from tensorflow.keras.preprocessing import image
 from werkzeug.utils import secure_filename
 
 openai.api_key = "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" #os.getenv("OPENAI_API_KEY_IMAGE")
+
+client = pymongo.MongoClient("mongodb+srv://pyflask:135792468@farming-assisstant.z38uqhw.mongodb.net/?retryWrites=true&w=majority")
+test_db = client["test"]
 
 app = Flask(__name__)
 CORS(app)
@@ -88,7 +93,7 @@ def model_predict(img_path, model):
 def upload():
     if request.method == "POST":
         # Get the file from post request
-        print("dfdsf")
+        # print("dfdsf")
         # print(request.files)
         # if "file" not in request.files:
         #     return "file not found"
@@ -235,15 +240,15 @@ def home():
     return "server started..."
 
 
-@app.route("/crop-predict2", methods=["POST"])
-def result():
-    if request.method == "POST":
-        print(request.json)
-        to_predict_list = request.json
-        to_predict_list = list(to_predict_list.values())
-        to_predict_list = list(map(int, to_predict_list))
-        result = CropPredictor(to_predict_list)
-        return result
+# @app.route("/crop-predict2", methods=["POST"])
+# def result():
+#     if request.method == "POST":
+#         print(request.json)
+#         to_predict_list = request.json
+#         to_predict_list = list(to_predict_list.values())
+#         to_predict_list = list(map(int, to_predict_list))
+#         result = CropPredictor(to_predict_list)
+#         return result
 
 
 @app.route("/crop-predict", methods=["POST"])
@@ -264,10 +269,11 @@ def crop():
 def result2():
     if request.method == "POST":
         print(request.json)
-        to_predict_list = request.json
+        to_predict = request.json
         location = request.json["location"]
-        del to_predict_list["location"]
-        to_predict_list = list(to_predict_list.values())
+        del to_predict["location"]
+
+        to_predict_list = list(to_predict.values())
 
         # Use the OpenWeatherMap API to get the weather forecast for the next 15 days
         api_key = "910fc3efa3d910c22b2a8a6a6989347c" #os.getenv("OPEN_WEATHER_API_KEY")
@@ -288,6 +294,7 @@ def result2():
 
         fertilizer_info = {"name": "", "img": ""}
         if ans == 0:
+            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"10-26-26"})
             response = openai.Image.create(
                 prompt="10-26-26 fertilizer",
                 n=1,
@@ -299,6 +306,7 @@ def result2():
                 "how_to_use": "To use 10-26-26 fertilizer, you will need to mix it with water according to the instructions on the package. The package will have a recommended mixing ratio, such as 1 tablespoon per gallon of water. For example, if you want to make a gallon of solution and package says to use 1 tablespoon per gallon, you would need to use 1 tablespoon of 10-26-26 fertilizer and 1 gallon of water. Then you can use the solution to water your plants or apply it to the foliage. It's important to note that different plants have different needs, and the amount of fertilizer you use should be adjusted accordingly. Also, be sure to not over-fertilize, as it can burn the plants. It's also a good idea to check the pH level of your soil and adjust it if necessary. As a general rule, most plants prefer a pH between 6 and 7.",
             }
         elif ans == 1:
+            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"14-35-14"})
             response = openai.Image.create(
                 prompt="14-35-14 fertilizer",
                 n=1,
@@ -310,6 +318,7 @@ def result2():
                 "how_to_use": "14-35-14 is a type of water-soluble fertilizer that contains 14% nitrogen, 35% phosphorous, and 14% potassium. To use it, you will need to mix it with water according to the instructions on the label. The package will have a recommended mixing ratio, such as 1 tablespoon per gallon of water. For example, if you want to make a gallon of solution and package says to use 1 tablespoon per gallon, you would need to use 1 tablespoon of 14-35-14 fertilizer and 1 gallon of water. Then you can use the solution to water your plants or apply it to the foliage. It's important to note that different plants have different needs, and the amount of fertilizer you use should be adjusted accordingly. Also, be sure to not over-fertilize, as it can burn the plants. It's also a good idea to check the pH level of your soil and adjust it if necessary. As a general rule, most plants prefer a pH between 6 and 7. Be sure to follow the instructions on the label and use caution when handling any fertilizer, as they can be harmful if not used properly.",
             }
         elif ans == 2:
+            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"17-17-17"})
             response = openai.Image.create(
                 prompt="17-17-17 fertilizer",
                 n=1,
@@ -321,6 +330,7 @@ def result2():
                 "how_to_use": "7-17-17 fertilizer is a water-soluble fertilizer that contains 7% nitrogen, 17% phosphorous, and 17% potassium. To use it, you will need to mix it with water according to the instructions on the label. The package will have a recommended mixing ratio, such as 1 tablespoon per gallon of water. For example, if you want to make a gallon of solution and package says to use 1 tablespoon per gallon, you would need to use 1 tablespoon of 7-17-17 fertilizer and 1 gallon of water. Then you can use the solution to water your plants or apply it to the foliage. It's important to note that different plants have different needs, and the amount of fertilizer you use should be adjusted accordingly. Also, be sure to not over-fertilize, as it can burn the plants. It's also a good idea to check the pH level of your soil and adjust it if necessary. As a general rule, most plants prefer a pH between 6 and 7. Be sure to follow the instructions on the label and use caution when handling any fertilizer, as they can be harmful if not used properly. It's important to keep in mind that 7-17-17 ratio is lower in nitrogen than other ratio, that's why it's a good idea to use this fertilizer when the plant is in the blooming or fruiting stage and not in the vegetative stage.",
             }
         elif ans == 3:
+            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"20-20"})
             response = openai.Image.create(
                 prompt="20-20 fertilizer",
                 n=1,
@@ -332,6 +342,7 @@ def result2():
                 "how_to_use": "20-20 fertilizer is a water-soluble fertilizer that contains equal amounts of Nitrogen (N) and Potassium (K) which is 20% each. It's important to note that this fertilizer does not contain any Phosphorus (P). To use it, you will need to mix it with water according to the instructions on the label. The package will have a recommended mixing ratio, such as 1 tablespoon per gallon of water. For example, if you want to make a gallon of solution and package says to use 1 tablespoon per gallon, you would need to use 1 tablespoon of 20-20 fertilizer and 1 gallon of water. Then you can use the solution to water your plants or apply it to the foliage. It's important to note that different plants have different needs, and the amount of fertilizer you use should be adjusted accordingly. Also, be sure to not over-fertilize, as it can burn the plants. It's also a good idea to check the pH level of your soil and adjust it if necessary. As a general rule, most plants prefer a pH between 6 and 7. Be sure to follow the instructions on the label and use caution when handling any fertilizer, as they can be harmful if not used properly. It's important to keep in mind that 20-20 ratio is higher in Potassium (K) than Nitrogen(N), that's why it's a good idea to use this fertilizer when the plant is in the blooming or fruiting stage and not in the vegetative stage.",
             }
         elif ans == 4:
+            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"28-28"})
             response = openai.Image.create(
                 prompt="28-28 fertilizer",
                 n=1,
@@ -343,6 +354,7 @@ def result2():
                 "how_to_use": "28-28 fertilizer is a water-soluble fertilizer that contains equal amounts of Nitrogen (N) and Potassium (K) which is 28% each. It's important to note that this fertilizer does not contain any Phosphorus (P). To use it, you will need to mix it with water according to the instructions on the label. The package will have a recommended mixing ratio, such as 1 tablespoon per gallon of water. For example, if you want to make a gallon of solution and package says to use 1 tablespoon per gallon, you would need to use 1 tablespoon of 28-28 fertilizer and 1 gallon of water. Then you can use the solution to water your plants or apply it to the foliage. It's important to note that different plants have different needs, and the amount of fertilizer you use should be adjusted accordingly. Also, be sure to not over-fertilize, as it can burn the plants. It's also a good idea to check the pH level of your soil and adjust it if necessary. As a general rule, most plants prefer a pH between 6 and 7. Be sure to follow the instructions on the label and use caution when handling any fertilizer, as they can be harmful if not used improperly. It's important to keep in mind that 28-28 ratio is higher in Nitrogen (N) and Potassium (K) than other ratios, that's why it's a good idea to use this fertilizer when the plant is in the vegetative stage and not in the blooming or fruiting stage. It's also important to note that this fertilizer does not contain Phosphorus (P), which is important for root growth and seed production, so you may need to supplement with additional fertilizer that contains P.",
             }
         elif ans == 5:
+            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"DAP"})
             response = openai.Image.create(
                 prompt="DAP fertilizer",
                 n=1,
@@ -354,6 +366,7 @@ def result2():
                 "how_to_use": "DAP (diammonium phosphate) fertilizer is a water-soluble fertilizer that contains 18% Nitrogen (N) and 46% Phosphorus (P) . To use it, you will need to mix it with water according to the instructions on the label. The package will have a recommended mixing ratio, such as 1 tablespoon per gallon of water. For example, if you want to make a gallon of solution and package says to use 1 tablespoon per gallon, you would need to use 1 tablespoon of DAP fertilizer and 1 gallon of water. Then you can use the solution to water your plants or apply it to the foliage. It's important to note that different plants have different needs, and the amount of fertilizer you use should be adjusted accordingly. Also, be sure to not over-fertilize, as it can burn the plants. It's also a good idea to check the pH level of your soil and adjust it if necessary. As a general rule, most plants prefer a pH between 6 and 7. Be sure to follow the instructions on the label and use caution when handling any fertilizer, as they can be harmful if not used improperly. It's important to keep in mind that DAP is high in Phosphorus (P) than Nitrogen(N), that's why it's a good idea to use this fertilizer when the plant is in the blooming or fruiting stage and not in the vegetative stage.",
             }
         else:
+            test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"UREA"})
             response = openai.Image.create(
                 prompt="Urea fertilizer",
                 n=1,
@@ -428,6 +441,9 @@ def submit():
             temperature=0,
         )
         print(instructions)
+        crop , disease = title.split(":")
+        test_db["disease_predict"].insert_one({"crop": crop ,"disease": disease})
+
         return {
             "title": title,
             "desc": description,
