@@ -492,10 +492,11 @@ def forecast():
                 "weather": reading["weather"][0]["description"],
                 "temperature": reading["main"]["temp"],
                 "humidity": reading["main"]["humidity"],
-                "wind_speed": reading["wind"]["speed"]
+                "wind_speed": reading["wind"]["speed"],
+                "rain": reading["weather"][0]['description'].title()
         })
 
-    print(forecast['wind_speed'])
+    print(forecast[0]['rain'])
 
     month = datetime.datetime.now().month
     hemisphere = "north"
