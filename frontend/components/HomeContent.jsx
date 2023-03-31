@@ -11,7 +11,7 @@ const HomeContent = () => {
             className="bg-cover h-full w-full"
           />
           <h1 className="absolute text-5xl text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            Demeter, Smart Agriculture
+            KHETI, Smart Agriculture
           </h1>
           <h2 className="absolute text-3xl text-amber-400 bottom-4 left-1/2 -translate-x-1/2">
             Cultivate efficiently with us!
@@ -36,7 +36,7 @@ const HomeContent = () => {
               </h3>
 
               <p class="mt-2 mb-5 text-base md:text-lg text-gray-600">
-                Demeter allows you to identify dangerous crop diseases and apply
+                KHETI allows you to identify dangerous crop diseases and apply
                 an individual approach to treat them, thus increasing disease
                 prevention effectively.
               </p>
@@ -82,7 +82,7 @@ const HomeContent = () => {
               <p class="mt-2 mb-5 text-base md:text-lg text-gray-600">
                 The amount of fertilizers added to soil during the period of
                 cultivation can greatly affect the soil pH and nutrients. Know
-                the right amount from Demeter.
+                the right amount from KHETI.
               </p>
               <button className="absolute bottom-0 right-0 mr-2 mb-1 mt-10 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-full">
                 <Link href="/Fertilizer">Calculate</Link>
@@ -104,7 +104,7 @@ const HomeContent = () => {
 
               <p class="mt-2 mb-5 text-base md:text-lg text-gray-600">
                 Weather plays an important role in Agriculture.
-                Know the weather with predictions from Demeter.
+                Know the weather with predictions from KHETI.
               </p>
               <button className="absolute bottom-0 right-0 mr-2 mb-1 mt-10 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-full">
                 <Link href="/Weather">Predict</Link>

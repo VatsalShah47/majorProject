@@ -8,7 +8,7 @@ const NewsItem = ({newTitle, newsImgUrl, newsUrl, newsDesc}) => {
         <img
           src={newsImgUrl}
           className="newsItemImg"
-          alt="Demeter Logo"
+          alt="KHETI Logo"
         />
         <div class="px-4 py-2">
           <div class="text-base font-semibold tracking-tight leading-none mb-1 newsItemTitle">{newTitle}</div>

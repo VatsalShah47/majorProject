@@ -42,7 +42,7 @@ export default function Navbar(props) {
                 className="text-white text-xl font-bold leading-relaxed inline-block mr-4 py-4 whitespace-nowrap uppercase px-2"
                 href="#pablo"
               >
-                Demeter
+                KHETI
               </a>
             </Link>
             </div>

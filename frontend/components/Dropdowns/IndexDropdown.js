@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { createPopper } from "@popperjs/core";
 
-const IndexDropdown = () => {
+const IndexDropdown = () => { 
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const btnDropdownRef = React.createRef();

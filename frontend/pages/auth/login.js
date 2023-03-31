@@ -9,7 +9,7 @@ import Layout from "components/Layout";
 
 export default function Login({ providers }) {
   return (
-    <Layout title="Login / DEMETER">
+    <Layout title="Login / KHETI">
       <div className="container mx-auto px-4 h-full">
         <div className="flex content-center items-center justify-center h-full">
           <div className="w-full lg:w-4/12 px-4">

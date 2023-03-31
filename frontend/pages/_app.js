@@ -34,7 +34,7 @@ export default class MyApp extends App {
     let comment = document.createComment(`
 
 =========================================================
-* Demeter - v1.1.0 based on Tailwind Starter Kit by Creative Tim
+* KHETI - v1.1.0 based on Tailwind Starter Kit by Creative Tim
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/notus-nextjs
@@ -73,7 +73,7 @@ export default class MyApp extends App {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          <title>Demeter</title>
+          <title>KHETI</title>
           <script
             src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"
             async

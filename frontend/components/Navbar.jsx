@@ -20,10 +20,10 @@ const Navbar = () => {
                                                 className="mr-3 h-12 animate-pulse sm:h-24"
                                                 height={95}
                                                 width={95}
-                                                alt="Demeter Logo"
+                                                alt="KHETI Logo"
                                             />
                                             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-                                                Demeter
+                                                KHETI
                                             </span>
                                         </a>
                                     </Link>

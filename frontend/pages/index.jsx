@@ -9,17 +9,17 @@ import Layout from "components/Layout";
 
 export default function Index() {
   return (
-    <Layout title="Home / Demeter">
+    <Layout title="Home / KHETI">
       <IndexNavbar fixed />
       <section className="header relative pt-16 items-center flex h-screen max-h-860-px">
         <div className="container mx-auto items-center flex flex-wrap">
           <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
             <div className="pt-32 sm:pt-0">
               <h2 className="font-semibold text-4xl text-blueGray-600">
-                Demeter - Smart Agriculture
+                KHETI - Smart Agriculture
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
-                Demeter is a software application that helps farmers manage and
+                KHETI is a software application that helps farmers manage and
                 optimize their agricultural operations.
               </p>
               <div className="mt-12">
@@ -93,10 +93,10 @@ export default function Index() {
                     ></polygon>
                   </svg>
                   <h4 className="text-xl font-bold text-white">
-                    Demeter - The Farming Assistant
+                    KHETI - The Farming Assistant
                   </h4>
                   <p className="text-md font-light mt-2 text-white">
-                    Demeter is a software application that helps farmers manage
+                    KHETI is a software application that helps farmers manage
                     and optimize their agricultural operations. It can provide a
                     variety of features such as disease detection, fertilizer
                     and crop recommendation and weather predictions. It include
@@ -134,7 +134,7 @@ export default function Index() {
                         Disease Detection
                       </h6>
                       <p className="mb-4 text-blueGray-500">
-                        Demeter allows you to identify dangerous crop diseases
+                        KHETI allows you to identify dangerous crop diseases
                         and apply an individual approach to treat them, thus
                         increasing disease prevention effectively.
                       </p>
@@ -195,7 +195,7 @@ export default function Index() {
                       <p className="mb-4 text-blueGray-500">
                         The amount of fertilizers added to soil during the
                         period of cultivation can greatly affect the soil pH and
-                        nutrients. Know the right amount from Demeter.
+                        nutrients. Know the right amount from KHETI.
                       </p>
                     </div>
                   </div>
@@ -222,7 +222,7 @@ export default function Index() {
                       </h6>
                       <p className="mb-4 text-blueGray-500">
                         Weather plays an important role in Agriculture. Know the
-                        weather with predictions from Demeter.
+                        weather with predictions from KHETI.
                       </p> */}
                     </div>
                   </div>
@@ -255,7 +255,7 @@ export default function Index() {
                 Disease Detection
               </h3>
               <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                Demeter allows you to identify dangerous crop diseases and apply
+                KHETI allows you to identify dangerous crop diseases and apply
                 an individual approach to treat them, thus increasing disease
                 prevention effectively.
               </p>
@@ -328,7 +328,7 @@ export default function Index() {
               <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
                 The amount of fertilizers added to soil during the period of
                 cultivation can greatly affect the soil pH and nutrients. Know
-                the right amount from Demeter.
+                the right amount from KHETI.
               </p>
               <div className="block pb-6">
                 <span className="text-xs font-semibold inline-block py-1 px-2  rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
@@ -453,7 +453,7 @@ export default function Index() {
               </h3>
               <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
                 Weather plays an important role in Agriculture. Know the weather
-                with predictions from Demeter.
+                with predictions from KHETI.
               </p> */}
               <div className="block pb-6">
                 <span className="text-xs font-semibold inline-block py-1 px-2  rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">

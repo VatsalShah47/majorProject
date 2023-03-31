@@ -7,7 +7,7 @@ const Footer = () => {
                 <span className="text-l text-white sm:text-center dark:text-white">
                     © 2022{" "}
                     <a href="#" className="hover:underline">
-                        Demeter™
+                        KHETI™
                     </a>
                     . All Rights Reserved.
                 </span>
