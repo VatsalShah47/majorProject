@@ -58,6 +58,7 @@ CORS(app)
 
 # Model saved with Keras model.save()
 MODEL_PATH ='./test.h5'
+data = pd.read_csv("Crop1.csv").loc[:,"Crop"]
 
 # Load your trained model
 model = load_model(MODEL_PATH)
@@ -265,6 +266,19 @@ def crop():
             "crop_name": crop_name,
             "no_of_crops": len(crop_name),
         }
+@app.route("/crop-predict",methods=["GET"])
+def get_crops():
+    results = []
+    for dat in data:
+        i = test_db["crop_recommendation"].count_documents({"output":{"$in":[dat]}})
+        results.append(i if i is not None else 0)
+    # dat = data.to_dict()
+    return jsonify({
+        "labels":data.to_list(),
+        "datasets":results,
+        "xlabel":"Crops",
+        "ylabel":"counts"
+    })
 
 
 @app.route("/fertilizer-predict", methods=["POST"])
@@ -454,7 +468,7 @@ def get_disease_predict():
     result = {
         "labels":disease_classes,
         "datasets":results,
-        "xlabel":"Fertilizers",
+        "xlabel":"Diseases",
         "ylabel":"count"
     }
     result = jsonify(result)
