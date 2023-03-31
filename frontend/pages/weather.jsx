@@ -18,7 +18,7 @@ export default function WeatherPrediction() {
   return (
     <Admin
       title="Weather Prediction"
-      headerText="Enter details to predict weather"
+      headerText="Enter Details To Predict Weather"
  
     >
       <div className="flex flex-wrap mt-4 justify-center">
