@@ -4,6 +4,7 @@ import Admin from "layouts/Admin.js";
 import DiseaseForm from "components/DiseaseForm";
 import CardBarChart from "components/Cards/CardBarChart";
 import DiseaseBarchart from "components/Cards/DiseaseBarchart";
+import CropBarchart from "components/Cards/CropBarchart"
 
 export default function Dashboard() {
   const { data: session, status } = useSession();
@@ -29,6 +30,9 @@ export default function Dashboard() {
           </div>
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
           <DiseaseBarchart />
+          </div>
+          <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+          <CropBarchart />
           </div>
         </div>
       </div>
