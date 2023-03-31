@@ -9,14 +9,7 @@ export default function Crop() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const securePage = () => {
-      if (status === "unauthenticated") {
-        signIn();
-      } else {
-        setLoading(false);
-      }
-    };
-    securePage();
+   setLoading(false);
   });
 
   if (loading) {
@@ -26,7 +19,6 @@ export default function Crop() {
     <Admin
       title="Crop Recommendation"
       headerText="Enter details to get crop recommendations"
-      image={session.user.image}
     >
       <div className="flex flex-wrap mt-4 justify-center">
         <div className="w-full mb-12 xl:mb-0 px-4">

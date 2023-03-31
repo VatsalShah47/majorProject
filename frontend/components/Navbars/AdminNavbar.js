@@ -1,7 +1,30 @@
 import React from "react";
 import Link from "next/link";
+import { signIn, useSession, getSession } from "next-auth/react";
+
 
 export default function Navbar({ title, image }) {
+  const { data: session, status } = useSession();
+
+  if(status === "unauthenticated") {
+    return(
+      <>
+      <nav className="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-4">
+        <div className="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
+          {/* Brand */}
+          <Link href="/">
+            <a
+              className="text-white text-lg uppercase hidden lg:inline-block font-bold"
+              onClick={(e) => e.preventDefault()}
+            >
+              {title}
+            </a>
+          </Link>
+        </div>
+      </nav>
+      </>
+    )
+  }
   return (
     <>
       {/* Navbar */}

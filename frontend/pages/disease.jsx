@@ -9,14 +9,7 @@ export default function Disease() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const securePage = () => {
-      if (status === "unauthenticated") {
-        signIn();
-      } else {
-        setLoading(false);
-      }
-    };
-    securePage();
+   setLoading(false);
   });
 
   if (loading) {
@@ -26,7 +19,6 @@ export default function Disease() {
     <Admin
       title="Disease Detection"
       headerText="Upload Image to detect crop disease"
-      image={session.user.image}
     >
       <div className="flex flex-wrap mt-4 justify-center">
         <div className="w-full mb-12 xl:mb-0 px-4">

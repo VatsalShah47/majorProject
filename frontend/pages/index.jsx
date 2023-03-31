@@ -77,7 +77,7 @@ export default function Index() {
               <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-blueGray-700">
                 <img
                   alt="..."
-                  src="https://res.cloudinary.com/atharva7/image/upload/v1664643964/samples/planttree_af1zl9.jpg"
+                  src="https://res.cloudinary.com/dqovxbnvq/image/upload/v1680247689/samples/kheti/organic-farming_vlro8f.jpg"
                   className="w-full align-middle rounded-t-lg"
                 />
                 <blockquote className="relative p-8 mb-4">
@@ -289,7 +289,7 @@ export default function Index() {
 
             <div className="w-96 md:w-5/12 px-4 mr-auto ml-auto mt-32">
               <Image
-                src="https://res.cloudinary.com/sarveshp46/image/upload/v1674139681/farming-assistant/Phone-App-2-PUT_1_ynahxl.webp"
+                src="https://res.cloudinary.com/dqovxbnvq/image/upload/v1680247996/samples/kheti/download_mbmlvg.jpg"
                 width={1000}
                 height={1000}
               />
@@ -299,7 +299,7 @@ export default function Index() {
           <div className="flex flex-wrap items-center pt-32">
             <div className="w-96 md:w-5/12 px-4 mr-auto ml-auto mt-32">
               <Image
-                src="https://res.cloudinary.com/sarveshp46/image/upload/v1674139877/farming-assistant/fertilizer_llvrpm.jpg"
+                src="https://res.cloudinary.com/dqovxbnvq/image/upload/v1680248137/samples/kheti/images_rfe2jy.jpg"
                 width={1000}
                 height={1000}
               />

@@ -15,14 +15,7 @@ export default function News() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const securePage = () => {
-      if (status === "unauthenticated") {
-        signIn();
-      } else {
-        setLoading(false);
-      }
-    };
-    securePage();
+   setLoading(false);
     axios
       .get("https://farming-assistant-backend-with-openai.onrender.com/getnews")
       .then(function (response) {
@@ -41,7 +34,7 @@ export default function News() {
     <Layout title="News">
       <Sidebar />
       <div className="relative md:ml-64 bg-blueGray-100">
-        <AdminNavbar title={"News"} image={session.user.image} />
+        <AdminNavbar title={"News"}/>
         <div className="relative bg-blueGray-800 md:pt-32 pb-6 pt-12"></div>
         <div className="px-4 md:px-10 mx-auto w-full -m-24">
           <div className="lg:flex mb-4 m-4 rounded mx-auto">

@@ -9,14 +9,7 @@ export default function Fertilizer() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const securePage = () => {
-      if (status === "unauthenticated") {
-        signIn();
-      } else {
-        setLoading(false);
-      }
-    };
-    securePage();
+   setLoading(false);
   });
 
   if (loading) {
@@ -26,7 +19,7 @@ export default function Fertilizer() {
     <Admin
       title="Fertilizer Recommendation"
       headerText="Enter details to get fertilizer recommendations"
-      image={session.user.image}
+ 
     >
       <div className="flex flex-wrap mt-4 justify-center">
         <div className="w-full mb-12 xl:mb-0 px-4">
