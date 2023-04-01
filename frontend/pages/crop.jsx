@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { signIn, useSession, getSession } from "next-auth/react";
 import Admin from "layouts/Admin.js";
 import CropForm from "components/CropForm";
+import ReactAudioPlayer from "react-audio-player";
 
 export default function Crop() {
   const { data: session, status } = useSession();
@@ -20,6 +21,10 @@ export default function Crop() {
       title="Crop Recommendation"
       headerText="Enter details to get crop recommendations"
     >
+        <ReactAudioPlayer
+  src="/Crop_rec.mp3"
+  controls
+/>
       <div className="flex flex-wrap mt-4 justify-center">
         <div className="w-full mb-12 xl:mb-0 px-4">
           <CropForm />

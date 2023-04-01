@@ -500,7 +500,7 @@ def submit():
         )
         print(instructions)
         crop , disease = title.split(":")
-        test_db["disease_predict"].insert_one({"disease": pred})
+        # test_db["disease_predict"].insert_one({"disease": pred})
 
         return {
             "title": title,
