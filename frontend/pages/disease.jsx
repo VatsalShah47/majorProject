@@ -28,11 +28,13 @@ export default function Disease() {
     <Admin
       title="Disease Detection"
       headerText="Upload Image to detect crop disease"
+      desc="Click on the play button to get the description of the page"
     >
   <ReactAudioPlayer
   src="/Disease.mp3"
   controls
 />
+
       <div className="flex flex-wrap mt-4 justify-center">
         <div className="w-full mb-12 xl:mb-0 px-4">
           <DiseaseForm />

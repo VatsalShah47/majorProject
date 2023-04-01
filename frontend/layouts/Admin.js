@@ -8,7 +8,7 @@ import HeaderStats from "components/Headers/HeaderStats.js";
 import FooterAdmin from "components/Footers/FooterAdmin.js";
 import Layout from "components/Layout";
 
-export default function Admin({ children, title, headerText, image  }) {
+export default function Admin({ children, title, headerText, image ,desc }) {
   return (
     <Layout title={title}>
       <Sidebar />
@@ -16,7 +16,7 @@ export default function Admin({ children, title, headerText, image  }) {
         <AdminNavbar title={title} image={image} />
         {/* Header */}
 
-        <HeaderStats headerText={headerText} />
+        <HeaderStats headerText={headerText} desc={desc}/>
         <div className="px-4 md:px-10 mx-auto w-full -m-24">
           {children}
           <FooterAdmin />

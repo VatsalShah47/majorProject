@@ -504,6 +504,18 @@ def submit():
             temperature=0,
         )
         print(instructions)
+        instructions = openai.Completion.create(
+            model="text-davinci-003",
+            prompt=f"Disease {title} description {description} supplement name {supplement_name} prevention methods {prevent}",
+            max_tokens=200,
+        )
+        print(instructions)
+        instructions = openai.Completion.create(
+            model="text-davinci-003",
+            prompt=f"Tell me more about this",
+            max_tokens=200,
+        )
+        print(instructions)
         crop , disease = title.split(":")
         # test_db["disease_predict"].insert_one({"disease": pred})
 
@@ -518,6 +530,21 @@ def submit():
             "buy_link": supplement_buy_link,
             "how_to_use": instructions.choices[0].text,
         }
+
+@app.route("/more-info",methods = ["GET"])
+def get_info():
+    prev_in = request.args.get("prev_in")
+    user_in = request.args.get("user_in") if request.args.get("user_in")!=None or str(request.args.get("user_in"))!=""  else "describe in more detail following steps"
+    print(prev_in,user_in)
+    instructions = openai.Completion.create(
+    model="text-davinci-003",
+    prompt=str(user_in) + "in context of" + str(prev_in),
+    max_tokens=2048,
+    )
+    print(instructions.choices[0].text)
+    return jsonify({
+        "instructions":instructions.choices[0].text
+    })    
 
 
 @app.route("/price-predict", methods=["POST"])

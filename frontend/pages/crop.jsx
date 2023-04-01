@@ -20,6 +20,7 @@ export default function Crop() {
     <Admin
       title="Crop Recommendation"
       headerText="Enter details to get crop recommendations"
+      desc="Click on the play button to get the description of the page"
     >
         <ReactAudioPlayer
   src="/Crop_rec.mp3"
