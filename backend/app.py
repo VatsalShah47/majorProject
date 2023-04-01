@@ -488,6 +488,7 @@ def submit():
         # image.save(file_path)
         # print(file_path)
         pred = prediction(image)
+        print(pred)
         title = disease_info["disease_name"][pred]
         description = disease_info["description"][pred]
         prevent = disease_info["Possible Steps"][pred]
@@ -518,7 +519,7 @@ def submit():
         print(instructions)
         print(pred)
         # crop , disease = title.split(":")
-        test_db["disease_predict"].insert_one({"disease": int(np.argmax(pred))})
+        test_db["disease_predict"].insert_one({"disease": int(pred)})
 
         return {
             "title": title,
