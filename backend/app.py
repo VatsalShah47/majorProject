@@ -466,7 +466,7 @@ def get_disease_predict():
     results = []
     for disease in range(0,38):
         try:
-            i = test_db["fertilizer_recommendation"].count_documents({"disease":disease})
+            i = test_db["disease_predict"].count_documents({"disease":disease})
         except:
             pass
         results.append(i if i is not None else 0)
@@ -516,8 +516,9 @@ def submit():
             max_tokens=200,
         )
         print(instructions)
-        crop , disease = title.split(":")
-        # test_db["disease_predict"].insert_one({"disease": pred})
+        print(pred)
+        # crop , disease = title.split(":")
+        test_db["disease_predict"].insert_one({"disease": int(np.argmax(pred))})
 
         return {
             "title": title,
