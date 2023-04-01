@@ -5,7 +5,7 @@ import ReactAudioPlayer from 'react-audio-player';
 
 import CardStats from "components/Cards/CardStats.js";
 
-export default function HeaderStats({ headerText  }) {
+export default function HeaderStats({ headerText ,desc }) {
   return (
     <>
       {/* Header */}
@@ -15,7 +15,11 @@ export default function HeaderStats({ headerText  }) {
 
         <div className="text-4xl text-white text-center font-semibold">
           {headerText}
+
         </div>
+        <div className="text-4m text-white text-center font-semibold">
+          {desc}
+                </div>
       </div>
     </>
   );

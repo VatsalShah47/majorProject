@@ -18,6 +18,7 @@ export default function Navbar({ title, image }) {
               onClick={(e) => e.preventDefault()}
             >
               {title}
+
             </a>
           </Link>
         </div>

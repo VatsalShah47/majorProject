@@ -59,7 +59,10 @@ const DiseaseForm = () => {
     <>
 
     <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+      
       <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto py-10">
+        
+        <div class="flex w-full items-center justify-center bg-grey-lighter">
         <div class="flex w-full items-center justify-center bg-grey-lighter">
           <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-blue-700">
             <svg
@@ -80,6 +83,7 @@ const DiseaseForm = () => {
               required
             />
           </label>
+          </div>
         </div>
         {imageSrc && (
           <div className="flex justify-center mt-6">
