@@ -345,7 +345,12 @@ def result2():
             return {
                 "name": "Dr. Earth All Purpose Fertilizer",
                 "img": response["data"][0]["url"],
-                "how_to_use": "Dr. Earth All Purpose Fertilizer organic components: Feather meal | Seaweed extract | Soft rock phosphate | Humic acid | Kelp meal | Blood meal | Bone meal | Dolomite lime",
+                "how_to_use": openai.Completion.create(
+                            model="gpt-3.5-turbo",
+                            prompt=f"how to use Dr. Earth All Purpose Fertilizer and how it helps the soil and crop growth",
+                            max_tokens=1000,
+                            temperature=0,
+                            )
             }
         elif ans == 3:
             test_db["fertilizer_recommendation"].insert_one({"input":to_predict,"output":"Jobe's Organics All-Purpose Fertilizer"})
@@ -500,7 +505,7 @@ def submit():
         )
         print(instructions)
         crop , disease = title.split(":")
-        test_db["disease_predict"].insert_one({"disease": pred})
+        # test_db["disease_predict"].insert_one({"disease": pred})
 
         return {
             "title": title,
